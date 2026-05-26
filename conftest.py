@@ -1,0 +1,1 @@
+# Fixtures globales pour Pytest
