@@ -73,9 +73,13 @@ simulating the purchase of electronic products. It is used strictly for testing 
         - Test execution report has been reviewed and approved
         - No critical or high severity bugs remain open
 
+
 ## 7. Risks & Dependencies
 <!-- Qu'est-ce qui pourrait bloquer tes tests ? -->
--> Le site est public et peut être indisponible
--> Les données de test peuvent être modifiées par d'autres utilisateurs
--> Pas d'accès à la base de données pour réinitialiser l'état
--> ChromeDriver doit être compatible avec la version de Chrome installée
+| Risk | Impact | Mitigation |
+|------|--------|------------|
+| Site unavailable | Tests cannot be executed, pipeline fails | Add a connectivity check before test execution, re-run manually if site is down |
+| Test data modified by other users | Test cases fails because of wrong data | Use dedicated test accounts and unique test data |
+| No database access to reset state | Test state cannot be reset between runs, data from previous tests may affect next ones | Generate unique test data on each run using Faker and timestamps |
+| ChromeDriver incompatible with Chrome | Tests cases fails, ChromeDriver cannot be executed | Use webdriver-manager to automatically download the compatible ChromeDriver version. |
+
