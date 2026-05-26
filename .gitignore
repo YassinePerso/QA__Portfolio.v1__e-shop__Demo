@@ -5,6 +5,17 @@ venv/
 # Cache Python
 __pycache__/
 *.pyc
+.pytest_cache/
 
 # Variables d'environnement
 .env
+
+# Rapports de test
+reports/
+
+# Allure
+allure-results/
+allure-report/
+
+# Logs
+*.log
