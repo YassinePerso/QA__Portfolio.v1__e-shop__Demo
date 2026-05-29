@@ -11,3 +11,23 @@
 - [ ] Email must not already be registered
 - [ ] After successful registration, user is redirected to home page as a logged-in user
 - [ ] If registration fails, a clear error message is displayed
+
+**Priority :** High
+**Story Points :** 3
+
+--------------------------------------------------------------------------------------------------------------------
+
+### US-02 : Account Log-in
+**As a** visitor
+**I want to** log-in into my account
+**So that** I can access my account and place orders
+
+#### Acceptance Criteria
+- [ ] Email and password must match an existing account in the database
+- [ ] After successful login, user is redirected to home page as a logged-in user
+- [ ] If log-in fails, a clear error message is displayed
+
+**Priority :** High
+**Story Points :** 3
+
+--------------------------------------------------------------------------------------------------------------------
