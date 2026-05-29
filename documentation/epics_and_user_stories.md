@@ -35,9 +35,6 @@
 
 
 
-
-
-
 # EPIC-02 : Shopping Experience
 
 ### US-03 : Product Search
@@ -56,7 +53,18 @@
 --------------------------------------------------------------------------------------------------------------------
 
 ### US-04 : Add to Cart
+**As a** visitor
+**I want to** add product to cart
+**So that** So that I can purchase them later
+
+#### Acceptance Criteria
+- [ ] Product must be available (in stock)
+- [ ] When added, the product appears in the cart
+- [ ] Cart item count is updated after adding a product
+- [ ] If product is out of stock, an error message is displayed and product cannot be added
+
+**Priority :** High
+**Story Points :** 3
 
 --------------------------------------------------------------------------------------------------------------------
 
-### US-05 : Checkout
