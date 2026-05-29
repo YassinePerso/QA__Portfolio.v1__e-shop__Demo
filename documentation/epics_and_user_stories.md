@@ -68,3 +68,17 @@
 
 --------------------------------------------------------------------------------------------------------------------
 
+### US-05 : Checkout
+**As a** logged-in user
+**I want to** complete my purchase
+**So that** I can receive the products I selected
+
+#### Acceptance Criteria
+- [ ] Cart must contain at least one product before accessing checkout
+- [ ] Total of amount of order is visible in checkout page
+- [ ] Client can pay from checkout page
+- [ ] When payment is done, client receives a "successful order payment" e-mail
+- [ ] If payment fails, an error message is displayed and the order is not confirmed
+
+**Priority :** High
+**Story Points :** 3
