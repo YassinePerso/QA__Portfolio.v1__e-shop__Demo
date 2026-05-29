@@ -1,6 +1,6 @@
 # EPIC-01 : User Account Management
 
-### US-01 : Account Registration
+## US-01 : Account Registration
 **As a** visitor
 **I want to** create a new account
 **So that** i can log into the website as a registered visitor
@@ -17,7 +17,7 @@
 
 --------------------------------------------------------------------------------------------------------------------
 
-### US-02 : Account Log-in
+## US-02 : Account Log-in
 **As a** visitor
 **I want to** log-in into my account
 **So that** I can access my account and place orders
@@ -37,7 +37,7 @@
 
 # EPIC-02 : Shopping Experience
 
-### US-03 : Product Search
+## US-03 : Product Search
 **As a** visitor
 **I want to** search products in the search bar
 **So that** I can quickly find a specific item 
@@ -52,7 +52,7 @@
 
 --------------------------------------------------------------------------------------------------------------------
 
-### US-04 : Add to Cart
+## US-04 : Add to Cart
 **As a** visitor
 **I want to** add product to cart
 **So that** So that I can purchase them later
@@ -68,7 +68,7 @@
 
 --------------------------------------------------------------------------------------------------------------------
 
-### US-05 : Checkout
+## US-05 : Checkout
 **As a** logged-in user
 **I want to** complete my purchase
 **So that** I can receive the products I selected
