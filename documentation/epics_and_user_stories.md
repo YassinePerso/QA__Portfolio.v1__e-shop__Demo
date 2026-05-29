@@ -1,4 +1,4 @@
-## EPIC-01 : User Account Management
+# EPIC-01 : User Account Management
 
 ### US-01 : Account Registration
 **As a** visitor
@@ -30,4 +30,33 @@
 **Priority :** High
 **Story Points :** 3
 
+
+
+
+
+
+
+
+
+# EPIC-02 : Shopping Experience
+
+### US-03 : Product Search
+**As a** visitor
+**I want to** search products in the search bar
+**So that** I can quickly find a specific item 
+
+#### Acceptance Criteria
+- [ ] When a valid product name is entered, matching results are displayed
+- [ ] If the product doesn't exist, a "no results" message is displayed
+- [ ] Search is case-insensitive
+
+**Priority :** High
+**Story Points :** 3
+
 --------------------------------------------------------------------------------------------------------------------
+
+### US-04 : Add to Cart
+
+--------------------------------------------------------------------------------------------------------------------
+
+### US-05 : Checkout
