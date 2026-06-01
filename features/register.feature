@@ -50,7 +50,7 @@ Feature: Registration
     
     #TC_005
     @regression @register
-    Scenario: Registration with invalid credentials and verify if error message is displayed
+    Scenario: Failed registration with invalid credentials and verify if error message is displayed
         When User enters invalid e-mail and password
         And User clicks the register button
         Then User should see an error message
