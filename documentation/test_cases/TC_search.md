@@ -23,3 +23,5 @@ User Story 3: Product Search
 | TC-001 | Enter valid product name and verify matching results are displayed | User is on home page | 1. Go to home page 2. Enter valid product name in search bar 3. Press Enter | Matching results are displayed | TODO |
 | TC-002 | Enter invalid product name and verify "no results" message is displayed | User is on home page | 1. Go to home page 2. Enter invalid product name in search bar 3. Press Enter | "No results" message is displayed | TODO |
 | TC-003 | Enter valid product name with wrong case and verify matching results are displayed | User is on home page | 1. Go to home page 2. Enter valid product name in wrong case 3. Press Enter | Matching results are displayed | TODO |
+| TC-004 | Search with special characters | User is on home page | 1. Go to home page 2. Enter product name with special characters in search bar 3. Press Enter | Matching results are displayed | TODO |
+| TC-005 | Search with less than 3 characters | User is on home page | 1. Go to home page 2. Enter search term with less than 3 characters 3. Press Enter | Error message indicating minimum length is displayed | TODO |
