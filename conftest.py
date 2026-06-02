@@ -3,7 +3,7 @@ from selenium import webdriver
 # Global fixtures for Pytest
 
 
-#Driver fixture for Selenium tests
+#Driver - fixture for Selenium tests
 @pytest.fixture
 def driver():
     driver = webdriver.Chrome()
@@ -11,7 +11,7 @@ def driver():
     driver.quit()
 
 
-#Base_url fixture for consistent test URLs
+#Base_url - fixture for test URLs
 @pytest.fixture
 def base_url():
     return "https://demowebshop.tricentis.com/"
