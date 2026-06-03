@@ -19,3 +19,6 @@ allure-report/
 
 # Logs
 *.log
+
+# Data - Users
+data/users.csv
