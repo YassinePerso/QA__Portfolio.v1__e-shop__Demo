@@ -22,7 +22,7 @@ load_dotenv()
 
 # ---------- Global fixtures for Pytest ---------- #
 
-#Driver - fixture for Selenium tests
+#Driver - fixture 
 @pytest.fixture(scope="function")
 def driver():
     
@@ -31,8 +31,8 @@ def driver():
     #if CI environment variable is set to "true", run in headless mode
     if os.getenv("CI"):
         options.add_argument("--headless")               #To make it run in headless mode for CI environment
-        options.add_argument("--no-sandbox")             #To Bypass OS security model
-        options.add_argument("--disable-dev-shm-usage")  #
+        options.add_argument("--no-sandbox")             #To bypass os security model
+        options.add_argument("--disable-dev-shm-usage")  #To overcome limited resource problems in CI environments
         
     driver = webdriver.Chrome(options=options)
     yield driver
@@ -49,7 +49,12 @@ def base_url():
 @pytest.fixture(scope="function")
 def logged_in_user(driver, base_url):
     driver.get(base_url + "login")
-    driver.find_element("id", "Email").send_keys("testuser@example.com")
-    driver.find_element("id", "Password").send_keys("Password123!")
-    driver.find_element("xpath", "//input[@value='Log in']").click()
+    
+    email = os.getenv("REGISTERED_EMAIL")       #Fetching email data from environment variables and storing it in a variable
+    password = os.getenv("REGISTERED_PASSWORD") #Fetching password data from environment variables and storing it in a variable
+    
+    
+    driver.find_element(By.ID, "Email").send_keys(email)
+    driver.find_element(By.ID, "Password").send_keys(password)
+    driver.find_element(By.XPATH, "//input[@value='Log in']").click()
     yield driver
