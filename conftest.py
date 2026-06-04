@@ -24,7 +24,7 @@ load_dotenv()
 
 #Driver - fixture 
 @pytest.fixture(scope="function")
-def driver():
+def driver(base_url):
     
     options = Options()
     
@@ -35,6 +35,7 @@ def driver():
         options.add_argument("--disable-dev-shm-usage")  #To overcome limited resource problems in CI environments
         
     driver = webdriver.Chrome(options=options)
+    driver.get(base_url)
     yield driver
     driver.quit()
 
@@ -53,7 +54,9 @@ def logged_in_user(driver, base_url):
     email = os.getenv("REGISTERED_EMAIL")       #Fetching email data from environment variables and storing it in a variable
     password = os.getenv("REGISTERED_PASSWORD") #Fetching password data from environment variables and storing it in a variable
     
-    
+    if not email or not password:
+        raise ValueError("One or more required environment variables not set") #If values are incorrect of missing, raise an error
+
     driver.find_element(By.ID, "Email").send_keys(email)
     driver.find_element(By.ID, "Password").send_keys(password)
     driver.find_element(By.XPATH, "//input[@value='Log in']").click()
