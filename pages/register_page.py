@@ -48,7 +48,7 @@ class RegisterPage (BasePage):
         
     #If test case is negative, get the error message text and return it
     def get_error_message(self):
-        error_message_locator = (By.CSS_SELECTOR, "span[class='field-validation-error']")      #Locator for error message element
+        error_message_locator = (By.CSS_SELECTOR, "span[class='field-validation-error']")      #Locator for error message element (same locator for all)
         return self.get_element_text(error_message_locator)      #Using .get_element_text() function of BasePage class to find error message element and return its text
     
     
