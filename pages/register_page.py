@@ -48,11 +48,11 @@ class RegisterPage (BasePage):
         
     #If test case is negative, get the error message text and return it
     def get_error_message(self):
-        error_message_locator = (By.CSS_SELECTOR, "div[class='validation-summary-errors'] span")      #Locator for error message element
+        error_message_locator = (By.CSS_SELECTOR, "span[class='field-validation-error']")      #Locator for error message element
         return self.get_element_text(error_message_locator)      #Using .get_element_text() function of BasePage class to find error message element and return its text
     
     
-    #Checking if registration is successful by checking if the logout link is visible since the URL does not change upon successful registration. Also if registration is successful, the email used for registration is displayed instead of register link
+    #Checking if registration is successful by checking if the logout link is visible since the URL doesnot change upon successful registration. Also if registration is successful, the email used for registration is displayed instead of register link
     def is_registration_successful(self):
         logout_link_locator = (By.CSS_SELECTOR, "a[class='ico-logout']")    #Locator for logout link, which is only visible when registration is successful
         return self.is_element_visible(logout_link_locator)     #Using .is_element_visible() function of BasePage class to check if logout link is visible, which indicates that registration was successful
