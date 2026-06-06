@@ -9,7 +9,7 @@ class CartPage (BasePage):
         #super() is used to call the __init__ method of the parent class (BasePage) and pass the driver argument to it, so that we can use the driver in the RegisterPage class
         super().__init__(driver)
         self.url_cart_page = "cart"    #URL for the cart page
-        self.empty_cart_message = (By.CSS_SELECTOR, "//div[@class='order-summary-content']")    #Locator for the message that appears when the cart is empty
+        self.empty_cart_message = (By.XPATH, "//div[@class='order-summary-content']")    #Locator for the message that appears when the cart is empty
         self.cart_item_row = (By.CSS_SELECTOR, ".cart-item-row")    #Locator for the cart item row in the cart page
         self.cart_remove_checkbox = (By.XPATH, "//input[@name='removefromcart']")    #Locator for the checkbox to remove a product from the cart
         self.cart_item_name = (By.CSS_SELECTOR, ".product-name")  #Locator the product name in the cart item row
@@ -73,5 +73,9 @@ class CartPage (BasePage):
     
     
     #----- Additional methods for more complex tests -----#
+    
+    #Method to get the total number of items in the cart
+    def get_cart_items_count(self):
+        self.driver.find_elements(*self.cart_item_row)
     
     
