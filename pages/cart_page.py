@@ -76,6 +76,9 @@ class CartPage (BasePage):
     
     #Method to get the total number of items in the cart
     def get_cart_items_count(self):
-        self.driver.find_elements(*self.cart_item_row)
+        items = self.driver.find_elements(*self.cart_item_row)
+        return len(items)
+    
+    
     
     
