@@ -77,8 +77,15 @@ class CartPage (BasePage):
     #Method to get the total number of items in the cart
     def get_cart_items_count(self):
         items = self.driver.find_elements(*self.cart_item_row)
-        return len(items)
+        return len(items)   #len() function to check total length of cart item row
     
     
+    #Method to click on checkout button
+    def click_checkout_button(self):
+        self.click(self.checkout_button)
     
     
+    #Method to check if a product is in the cart
+    def is_product_in_cart(self, cart_item_name):
+        items = self.driver.find_elements(*self.cart_item_name)   #Using * to return multiple arguments expected with finds_elements method
+        return any(item.text == cart_item_name for item in items)   #Using any() function to check if any of the items in the cart have the same name as the cart_item_name argument passed to the method
