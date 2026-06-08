@@ -89,3 +89,6 @@ class CartPage (BasePage):
     def is_product_in_cart(self, cart_item_name):
         items = self.driver.find_elements(*self.cart_item_name)   #Using * to return multiple arguments expected with finds_elements method
         return any(item.text == cart_item_name for item in items)   #Using any() function to check if any of the items in the cart have the same name as the cart_item_name argument passed to the method
+    
+    
+    
