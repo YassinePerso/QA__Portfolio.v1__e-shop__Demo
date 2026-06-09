@@ -12,10 +12,8 @@
 
 | TC-06 | Register with 7 characters password | User is on registration page | 1. Go to registration page 2. Enter valid email 3. Enter password with 7 characters 4. Click Register | User is successfully registered | TODO |
 
-| TC-07 | Register with non-registered email | User is on registration page | 1. Go to registration page 2. Enter non-registered email 3. Enter password 4. Click Register | User is successfully registered | TODO |
+| TC-07 | Register with registered email | User is on registration page | 1. Go to registration page 2. Enter registered email 3. Enter password 4. Click Register | An error message is displayed | TODO |
 
-| TC-08 | Register with registered email | User is on registration page | 1. Go to registration page 2. Enter registered email 3. Enter password 4. Click Register | An error message is displayed | TODO |
+| TC-08 | After registration, verify user is redirected to home page as logged-in user | User is on registration page | 1. Go to registration page 2. Enter valid email 3. Enter password 4. Click Register | User is successfully redirected to home page as logged-in user | TODO |
 
-| TC-09 | After registration, verify user is redirected to home page as logged-in user | User is on registration page | 1. Go to registration page 2. Enter valid email 3. Enter password 4. Click Register | User is successfully redirected to home page as logged-in user | TODO |
-
-| TC-10 | Register with invalid credentials, verify error message is displayed | User is on registration page | 1. Go to registration page 2. Enter invalid credentials 4. Click Register 5. Verify error message is displayed| An error message is successfully displayed | TODO |
+| TC-09 | Register with invalid credentials, verify error message is displayed | User is on registration page | 1. Go to registration page 2. Enter invalid credentials 4. Click Register 5. Verify error message is displayed| An error message is successfully displayed | TODO |
