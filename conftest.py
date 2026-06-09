@@ -9,7 +9,6 @@ from selenium.webdriver.chrome.options import Options
 
 import os
 from dotenv import load_dotenv
-
 import csv
 
 
