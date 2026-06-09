@@ -52,6 +52,12 @@ class RegisterPage (BasePage):
         return self.get_element_text(error_message_locator)      #Using .get_element_text() function of BasePage class to find error message element and return its text
     
     
+    #Get error message is email is ALREADY REGISTERED
+    def get_error_message_already_registered_email(self):
+        error_message_locator = (By.CSS_SELECTOR, "div[class='validation-summary-errors'] ul li")      #Locator for error message element (same locator for all)
+        return self.get_element_text(error_message_locator)      #Using .get_element_text() function of BasePage class to find error message element and return its text
+    
+    
     #Checking if registration is successful by checking if the logout link is visible since the URL doesnot change upon successful registration. Also if registration is successful, the email used for registration is displayed instead of register link
     def is_registration_successful(self):
         logout_link_locator = (By.CSS_SELECTOR, "a[class='ico-logout']")    #Locator for logout link, which is only visible when registration is successful
