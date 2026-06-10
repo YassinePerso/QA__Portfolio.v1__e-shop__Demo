@@ -86,7 +86,7 @@ class CartPage (BasePage):
         self.click(self.checkout_button)
         
         
-    #Method to click on checkbox input to agree Terms of Service
+    #Method to click verify if checkbox input to agree Terms of Service is selected, If not it does click on checkbox
     def accept_terms(self):
         checkbox = self.find_element(self.terms_checkbox)
         if not checkbox.is_selected():
