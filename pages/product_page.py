@@ -13,6 +13,8 @@ class ProductPage (BasePage):
         self.quantity_input = (By.CSS_SELECTOR, ".qty-input") #CSS selector for the quantity input field
         self.added_to_cart_message = (By.CSS_SELECTOR, ".content")    #CSS selector for the message that appears when a product is added to the cart
         self.url_name_product = "black-white-diamond-heart"
+        self.url_name_product_2 = "141-inch-laptop"
+        self.product_name_text = "Black & White Diamond Heart"
     
     
     #Get the product name

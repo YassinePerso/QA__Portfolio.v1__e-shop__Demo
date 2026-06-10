@@ -1,7 +1,7 @@
 | TC ID | Title | Preconditions | Steps | Expected Result | Status |
 |-------|-------|---------------|-------|-----------------|--------|
-| TC-01 | Add out-of-stock product to cart and verify product is not added | User is on product page | 1. Go to product page 2. Select out-of-stock product 3. Click Add to Cart | Product is not added to cart | TODO |
+| TC-01 | Add out-of-stock product to cart and verify product is not added | User is on product page | 1. Go to product page 2. Select out-of-stock product 3. Click Add to Cart | Product is not added to cart and Add to Cart button is not displayed | TODO |
 | TC-02 | Add available product to cart | User is on product page | 1. Go to product page 2. Select available product 3. Click Add to Cart | Product is successfully added to cart | TODO |
 | TC-03 | Add product to cart and verify it appears in the cart | User is on product page | 1. Go to product page 2. Select available product 3. Click Add to Cart 4. Go to cart page | Product appears in cart | TODO |
 | TC-04 | Add second product and verify cart item count is updated | User has one product in cart and is on product page | 1. Go to product page 2. Select a second available product 3. Click Add to Cart 4. Check cart item count | Cart item count is updated | TODO |
-| TC-05 | Add out-of-stock product and verify error message is displayed | User is on product page | 1. Go to product page 2. Select out-of-stock product 3. Click Add to Cart | An error message is displayed | TODO |
+| TC-05 | ~~Add out-of-stock product and verify error message~~ | Merged into TC-01 | - | - | REMOVED |
