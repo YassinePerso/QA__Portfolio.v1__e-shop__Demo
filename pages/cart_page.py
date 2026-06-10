@@ -23,6 +23,8 @@ class CartPage (BasePage):
         self.terms_checkbox = (By.ID, "termsofservice")
         
         
+        
+        
     #Method to navigate to cart page from home page
     def navigate_to_cart_page(self, base_url):
         self.driver.get(base_url + self.url_cart_page)
@@ -67,10 +69,19 @@ class CartPage (BasePage):
     def click_continue_shopping_button(self):
         self.click(self.continue_shopping_button)
         
+        
     #Method to get the total price of the cart
     def get_total_price(self):
         return self.get_element_text(self.total_price)
-        
+    
+    
+    #Method to empty cart when needed
+    def empty_cart(self):
+        checkboxes = self.driver.find_elements(*self.cart_remove_checkbox)
+        for checkbox in checkboxes:
+            checkbox.click()
+        self.click_update_cart_button()
+    
     
     
     #----- Additional methods for more complex tests -----#
@@ -92,7 +103,6 @@ class CartPage (BasePage):
         if not checkbox.is_selected():
             checkbox.click()
          
-    
     
     #Method to check if a product is in the cart
     def is_product_in_cart(self, cart_item_name):
