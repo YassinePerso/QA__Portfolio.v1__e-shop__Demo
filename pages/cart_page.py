@@ -20,6 +20,7 @@ class CartPage (BasePage):
         self.continue_shopping_button = (By.CSS_SELECTOR, "input[value='Continue shopping']")    #Locator for the button to return to home page and continue shopping
         self.total_price = (By.CSS_SELECTOR, ".order-total .product-price")    #Locator for the total price of the cart in the cart page
         self.checkout_button = (By.ID, "checkout")    #Locator for the button to proceed to checkout
+        self.terms_checkbox = (By.ID, "termsofservice")
         
         
     #Method to navigate to cart page from home page
@@ -83,6 +84,14 @@ class CartPage (BasePage):
     #Method to click on checkout button
     def click_checkout_button(self):
         self.click(self.checkout_button)
+        
+        
+    #Method to click verify if checkbox input to agree Terms of Service is selected, If not it does click on checkbox
+    def accept_terms(self):
+        checkbox = self.find_element(self.terms_checkbox)
+        if not checkbox.is_selected():
+            checkbox.click()
+         
     
     
     #Method to check if a product is in the cart
