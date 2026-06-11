@@ -10,18 +10,27 @@ class LoginPage (BasePage):
         self.username_input = (By.ID, "Email")
         self.password_input = (By.ID, "Password")
         self.login_button = (By.XPATH, "//input[@value='Log in']")
+        self.url_login = "login"
+        
+        
+    #Navigate to login page  
+    def navigate_to_login_page(self, base_url):
+        self.driver.get(base_url + self.url_login)
         
     #Using type_text() function of BasePage class to find email input and fill it with value
     def enter_email(self, email):
         self.type_text(self.username_input, email)
         
+        
     #Using type_text() function of BasePage class to find password input and fill it with value
     def enter_password(self, password):
         self.type_text(self.password_input, password)
         
+        
     #Using click() function of BasePage class to find login button and click on it
     def click_login_button(self):
         self.click(self.login_button)
+    
     
     #Complete login method that combines all the steps to perform login action
     def login(self, email, password):
