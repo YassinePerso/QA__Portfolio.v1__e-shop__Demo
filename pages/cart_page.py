@@ -78,13 +78,15 @@ class CartPage (BasePage):
     #Method to empty cart when needed
     def empty_cart(self):
         checkboxes = self.driver.find_elements(*self.cart_remove_checkbox)
+        if not checkboxes: 
+            return   #if checkboxes is empty, it ends here, so the webdriver doesn't loop on empty list
         for checkbox in checkboxes:
             checkbox.click()
         self.click_update_cart_button()
     
     
     
-    #----- Additional methods for more complex tests -----#
+    # ---------- Additional methods for more complex tests ---------- #
     
     #Method to get the total number of items in the cart
     def get_cart_items_count(self):
