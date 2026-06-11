@@ -14,28 +14,40 @@ class RegisterPage (BasePage):
         self.password_input = (By.ID, "Password")
         self.confirm_password_input = (By.ID, "ConfirmPassword")
         self.register_button = (By.ID, "register-button")
+        self.url_register = "register"
         
         
     
+    #Navigate to regsiter page
+    def navigate_to_register_page(self, base_url):
+        self.driver.get(base_url + self.url_register)
+        
+    
+    #Enter firstname
     def enter_firstname(self, firstname):
         self.type_text(self.firstname_input, firstname)
 
+    #Enter lastname
     def enter_lastname(self, lastname):
         self.type_text(self.lastname_input, lastname)
 
+    #Enter email
     def enter_email(self, email):
         self.type_text(self.email_input, email)
 
+    #Enter password
     def enter_password(self, password):
         self.type_text(self.password_input, password)
 
+    #Enter confirm password
     def enter_confirm_password(self, confirm_password):
         self.type_text(self.confirm_password_input, confirm_password)
         
+    #Click register button    
     def click_register_button(self):
         self.click(self.register_button)
         
-        
+    #Method that performs all needed actions to register
     def register(self, firstname, lastname, email, password, confirm_password):
         self.enter_firstname(firstname)
         self.enter_lastname(lastname)
