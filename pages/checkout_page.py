@@ -66,7 +66,7 @@ class CheckoutPage (BasePage):
         self.click(self.confirm_order_button)
 
     # Verify order confirmed
-    def is_order_confirmed(self, base_url):
+    def is_order_confirmed(self):
         return self.is_element_visible(self.message_successful_order)
     
     # Global method - complete checkout
