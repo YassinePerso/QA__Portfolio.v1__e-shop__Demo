@@ -100,6 +100,7 @@ def test_TC06_failed_payment_verify_message(base_url, logged_in_user, empty_cart
     
     product_page.navigate_to_product_page(base_url)
     product_page.add_product_to_cart(1)
+    product_page.is_added_to_cart_message_displayed() 
     cart_page.navigate_to_cart_page(base_url)
     cart_page.accept_terms()  #accept terms of service before clicking on checkout button
     cart_page.click_checkout_button()
