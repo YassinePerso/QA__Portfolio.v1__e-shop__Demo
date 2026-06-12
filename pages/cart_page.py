@@ -12,7 +12,7 @@ class CartPage (BasePage):
         self.empty_cart_message = (By.XPATH, "//div[@class='order-summary-content']")    #Locator for the message that appears when the cart is empty
         self.cart_item_row = (By.CSS_SELECTOR, ".cart-item-row")    #Locator for the cart item row in the cart page
         self.cart_remove_checkbox = (By.XPATH, "//input[@name='removefromcart']")    #Locator for the checkbox to remove a product from the cart
-        self.cart_item_name = (By.CSS_SELECTOR, ".product-name")  #Locator the product name in the cart item row
+        self.cart_item_name = (By.XPATH, "//a[@class='product-name']")  #Locator the product name in the cart item row
         self.cart_item_price = (By.CSS_SELECTOR, ".product-unit-price")    #Locator for the product price in the cart item row
         self.cart_item_quantity = (By.CSS_SELECTOR, ".qty-input")   #Locator for the iquantity input field in the cart item row
         self.cart_item_total = (By.CSS_SELECTOR, ".product-subtotal")   #Locator for the total price of the product in the cart item row
@@ -108,7 +108,7 @@ class CartPage (BasePage):
     
     #Method to check if a product is in the cart
     def is_product_in_cart(self, cart_item_name):
-        items = self.driver.find_elements(*self.cart_item_name)   #Using * to return multiple arguments expected with finds_elements method
+        items = self.driver.find_elements(*self.cart_item_name)     #Using * to return multiple arguments expected with finds_elements method
         return any(item.text == cart_item_name for item in items)   #Using any() function to check if any of the items in the cart have the same name as the cart_item_name argument passed to the method
     
     
