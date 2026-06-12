@@ -19,6 +19,7 @@ def test_TC01_add_product_and_go_checkout_page_as_logged_in_user(base_url, logge
     
     product_page.navigate_to_product_page(base_url)
     product_page.add_product_to_cart(1)
+    assert product_page.is_added_to_cart_message_displayed()  #Waiting for "Added to cart" message to appear
     cart_page.navigate_to_cart_page(base_url)
     assert cart_page.is_element_visible(cart_page.checkout_button)
     cart_page.accept_terms()
@@ -49,6 +50,7 @@ def test_TC03_add_product_verify_total_visible_in_checkout_page(base_url, logged
     
     product_page.navigate_to_product_page(base_url)
     product_page.add_product_to_cart(1)
+    assert product_page.is_added_to_cart_message_displayed()  #Waiting for "Added to cart" message to appear
     cart_page.navigate_to_cart_page(base_url)
     cart_page.accept_terms()  #accept terms of service before clicking on checkout button
     cart_page.click_checkout_button()
@@ -72,6 +74,7 @@ def test_TC04_complete_payment_verify_order_confirmation(base_url, logged_in_use
     
     product_page.navigate_to_product_page(base_url)
     product_page.add_product_to_cart(1)
+    assert product_page.is_added_to_cart_message_displayed()  #Waiting for "Added to cart" message to appear
     cart_page.navigate_to_cart_page(base_url)
     cart_page.accept_terms()  #accept terms of service before clicking on checkout button
     cart_page.click_checkout_button()

@@ -152,7 +152,7 @@ def test_TC08_successful_registration_redirect_homepage (driver, base_url):
     #Using register() function that combines all actions to perform successful registration
     register_page.register(random_firstname, random_lastname, random_email, password, password)
     assert register_page.is_registration_successful()
-    assert "registerresult" in register_page.get_current_url()  #Safer assertion even if the link changes than the entire url
+    assert "registerresult" in register_page.get_current_url()  #Safer assertion even if the link changes than the entire url - checks if "registerresult" is present in the url
     
     
     
