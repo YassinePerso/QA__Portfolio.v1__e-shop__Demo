@@ -41,7 +41,7 @@ class LoginPage (BasePage):
         
     #If test case is negative, get the error message text and return it
     def get_error_message(self):
-        error_message_locator = (By.CSS_SELECTOR, "div[class='validation-summary-errors'] span")      #Locator for error message element
+        error_message_locator = (By.XPATH, "//span[@for='Email']")      #Locator for error message element
         return self.get_element_text(error_message_locator)      #Using .get_element_text() function of BasePage class to find error message element and return its text
     
     
