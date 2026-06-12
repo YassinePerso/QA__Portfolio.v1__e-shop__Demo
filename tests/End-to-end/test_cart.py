@@ -33,7 +33,7 @@ def test_TC02_add_available_product_to_cart(driver, base_url):
     
     product_page.navigate_to_product_page(base_url)
     product_page.add_product_to_cart(1)
-    assert product_page.is_added_to_cart_message_displayed()
+    assert product_page.is_added_to_cart_message_displayed()  #Waiting for "Added to cart" message to appear
     
     
     
@@ -47,7 +47,8 @@ def test_TC03_add_product_verify_displayed_in_cart(driver, base_url):
     
     product_page.navigate_to_product_page(base_url)
     product_page.add_product_to_cart(1)
-    cart_page.navigate_to_cart_page(base_url)
+    assert product_page.is_added_to_cart_message_displayed()  #Waiting for "Added to cart" message to appear
+    cart_page.navigate_to_cart_page(base_url)                 #Then navigates to cart page to verify if product is successfully added
     assert cart_page.is_product_in_cart(product_page.product_name_text)
     
     
@@ -62,8 +63,10 @@ def test_TC04_add_second_product_verify_count_update(driver, base_url):
     
     product_page.driver.get(base_url + product_page.url_name_product) 
     product_page.add_product_to_cart(1)
+    assert product_page.is_added_to_cart_message_displayed()  #Waiting for "Added to cart" message to appear
     product_page.driver.get(base_url + product_page.url_name_product_2) 
     product_page.add_product_to_cart(1)
+    assert product_page.is_added_to_cart_message_displayed()  #Waiting for "Added to cart" message to appear
     cart_page.navigate_to_cart_page(base_url)
     assert cart_page.get_cart_items_count() == 2
 
