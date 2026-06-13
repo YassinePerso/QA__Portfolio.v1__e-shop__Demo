@@ -28,7 +28,8 @@ def test_TC02_failed_login_invalid_email(driver, base_url):
     password = os.getenv("REGISTERED_PASSWORD")
     login_page.navigate_to_login_page(base_url)
     login_page.login(fake_email, password)
-    assert login_page.get_error_message()
+    # assert login_page.get_error_message()
+    assert login_page.get_error_message_invalid_mail()
     
     
     
