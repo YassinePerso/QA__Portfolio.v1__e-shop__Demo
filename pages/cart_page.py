@@ -102,6 +102,8 @@ class CartPage (BasePage):
     #Method to click verify if checkbox input to agree Terms of Service is selected, If not it does click on checkbox
     def accept_terms(self):
         checkbox = self.find_element(self.terms_checkbox)
+        if not checkbox: 
+            return   #if checkboxes is empty, it ends here, so the webdriver doesn't loop on empty list
         if not checkbox.is_selected():
             checkbox.click()
          

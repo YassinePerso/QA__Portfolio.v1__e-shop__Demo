@@ -41,9 +41,14 @@ class LoginPage (BasePage):
         
     #If test case is negative, get the error message text and return it
     def get_error_message(self):
-        error_message_locator = (By.XPATH, "//span[@for='Email']")      #Locator for error message element
+        error_message_locator = (By.CSS_SELECTOR, "div[class='validation-summary-errors'] span")    #Locator for error message element - "Login was unsuccessful. Please correct the errors and try again.The credentials provided are incorrect"
         return self.get_element_text(error_message_locator)      #Using .get_element_text() function of BasePage class to find error message element and return its text
     
+    
+    #Same as get_error_message but made for TEST_TC02_failed_llogin_invalid_email
+    def get_error_message_invalid_mail(self):
+        error_message_invalid_mail_locator = (By.XPATH, "//span[@for='Email']")
+        return self.get_element_text(error_message_invalid_mail_locator) 
     
     #Checking if login is succesful by checking if the logout link is visible since the URL does not change upon successful login
     def is_login_successful(self):
