@@ -1,0 +1,101 @@
+
+name: Demo Web Shop Automation Pipeline   #Name displayed on Github graphic interface
+
+
+#Defining actions on which tests are triggered
+on:
+  push:           #Triggering the tests on PUSH
+    branches:
+      - main
+      - dev
+  pull_request:   #Triggering the tests on PULL REQUEST
+    branches:
+      - main
+      - dev
+
+
+
+#First step : Code review with a linter -> flake8
+#This step is the first security step to not get false negative tests
+jobs:
+
+
+  lint:   #First for code review (lint)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4    #Github action that clones the repo on virtual machine
+
+      - name: Set up Python
+        uses: actions/setup-python@v5     #Github action that installs python
+        with:
+          python-version: '3.12'          #indicates version of python needed
+      
+      - name: Install flake8          #We use flake8 as a linter
+        run: pip install flake8       #installing flake8
+      
+      - name: Run lint                
+        run: flake8 pages/ tests/ conftest.py --max-line-length=120   #"--max-line-length=120" is used to indicate to flake8 that code lines over 120 characters must be signaled as errors
+
+
+
+  smoke-tests:   #For smoke tests
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4    #Github action that clones the repo on virtual machine
+
+      - name: Set up Python
+        uses: actions/setup-python@v5     #Github action that installs python
+        with:
+          python-version: '3.12'          #indicates version of python needed
+      
+      - name: Install dependencies          
+        run: pip install -r requirements.txt      #installing dependencies
+      
+      - name: Run smoke-tests                
+        run:  pytest tests/End-to-end/ -v -m smoke --html=reports/report.html --self-contained-html
+
+
+
+  regression-tests:   #For regression tests
+    needs: smoke-tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4    #Github action that clones the repo on virtual machine
+
+      - name: Set up Python
+        uses: actions/setup-python@v5     #Github action that installs python
+        with:
+          python-version: '3.12'          #indicates version of python needed
+      
+      - name: Install dependencies          
+        run: pip install -r requirements.txt      #installing dependencies
+      
+      - name: Run regression-tests                
+        run:  pytest tests/End-to-end/ -v --html=reports/report.html --self-contained-html    #Without "-m" to run all test for complete test report 
+
+
+
+  api-tests:   #For API Postman tests
+    needs: smoke-tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4    #Github action that clones the repo on virtual machine
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4    #Github action that installs Node.js
+        with:
+          node-version: '22.14'          #indicates version of node.js needed
+      
+      - name: Install Newman         
+        run:  npm install -g newman      #Install Newman
+      
+      - name: Run api-tests                
+        run:  newman run postman/demowebshop_collection.json -e postman/environment.json --reporters cli,html --reporter-html-export reports/api_report.html    #Without "-m" to run all test for complete test report 
+
+
+
