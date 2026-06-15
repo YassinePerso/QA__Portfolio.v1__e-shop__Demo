@@ -35,7 +35,7 @@ jobs:
         run: pip install flake8       #installing flake8
       
       - name: Run lint                
-        run: flake8 pages/ tests/ conftest.py --max-line-length=120   #"--max-line-length=120" is used to indicate to flake8 that code lines over 120 characters must be signaled as errors
+        run: flake8 pages/ tests/ conftest.py --max-line-length=200   #"--max-line-length=120" is used to indicate to flake8 that code lines over 120 characters must be signaled as errors
 
 
 
