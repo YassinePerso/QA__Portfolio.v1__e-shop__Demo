@@ -49,11 +49,21 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5     #Github action that installs python
         with:
-          python-version: '3.12'          #indicates version of python needed
+          python-version: '3.12.3'          #indicates version of python needed
       
       - name: Install dependencies          
         run: pip install -r requirements.txt      #installing dependencies
-      
+      ##########
+      - name: Debug env vars
+        env:
+          REGISTERED_EMAIL: ${{ secrets.REGISTERED_EMAIL }}
+        run: |
+          if [ -z "$REGISTERED_EMAIL" ]; then
+            echo "REGISTERED_EMAIL is EMPTY"
+          else
+            echo "REGISTERED_EMAIL has a value, length: ${#REGISTERED_EMAIL}"
+          fi
+      ##########
       - name: Run smoke-tests    
         env:
           REGISTERED_EMAIL: ${{ secrets.REGISTERED_EMAIL }}
@@ -95,7 +105,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4    #Github action that installs Node.js
         with:
-          node-version: '22.14'          #indicates version of node.js needed
+          node-version: '24'          #indicates version of node.js needed
       
       - name: Install Newman         
         run:  npm install -g newman      #Install Newman
