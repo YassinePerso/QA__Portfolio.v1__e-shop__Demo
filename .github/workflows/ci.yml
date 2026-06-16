@@ -59,7 +59,13 @@ jobs:
         env:
           REGISTERED_EMAIL: ${{ secrets.REGISTERED_EMAIL }}
           REGISTERED_PASSWORD: ${{ secrets.REGISTERED_PASSWORD }}            
-        run:  pytest tests/End-to-end/ -v -m smoke --html=reports/report.html --self-contained-html
+        run:  pytest tests/End-to-end/ -v -m smoke --html=reports/smoke_report.html --self-contained-html
+
+      - name: Upload smoke test report
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-test-report
+          path: reports/smoke_report.html
 
 
 
@@ -83,7 +89,13 @@ jobs:
         env:
           REGISTERED_EMAIL: ${{ secrets.REGISTERED_EMAIL }}
           REGISTERED_PASSWORD: ${{ secrets.REGISTERED_PASSWORD }}            
-        run:  pytest tests/End-to-end/ -v --html=reports/report.html --self-contained-html    #Without "-m" to run all test for complete test report 
+        run:  pytest tests/End-to-end/ -v --html=reports/regression_report.html --self-contained-html    #Without "-m" to run all test for complete test report 
+
+      - name: Upload regression test report
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-test-report
+          path: reports/regression_report.html
 
 
 
@@ -104,6 +116,27 @@ jobs:
       
       - name: Run api-tests                
         run:  newman run postman/demowebshop_collection.json -e postman/environment.json --reporters cli,html --reporter-html-export reports/api_report.html
+
+      - name: Upload api test report
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-test-report
+          path: reports/api_report.html
+
+
+
+  # report:
+  #   needs: [regression-tests, api-tests]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+
+  #     - name: Upload test reports
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: test-reports
+  #         path: reports/
 
 
 
