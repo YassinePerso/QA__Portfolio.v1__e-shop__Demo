@@ -35,7 +35,7 @@ jobs:
         run: pip install flake8       #installing flake8
       
       - name: Run lint                
-        run: flake8 pages/ tests/ conftest.py --max-line-length=200   #"--max-line-length=120" is used to indicate to flake8 that code lines over 120 characters must be signaled as errors
+        run: flake8 pages/ tests/ conftest.py --max-line-length=200   #"--max-line-length=120" is used to indicate to flake8 that code lines over 200 characters must be signaled as errors
 
 
 
@@ -54,7 +54,10 @@ jobs:
       - name: Install dependencies          
         run: pip install -r requirements.txt      #installing dependencies
       
-      - name: Run smoke-tests                
+      - name: Run smoke-tests    
+        env:
+          REGISTERED_EMAIL: ${{ secrets.REGISTERED_EMAIL }}
+          REGISTERED_PASSWORD: ${{ secrets.REGISTERED_PASSWORD }}            
         run:  pytest tests/End-to-end/ -v -m smoke --html=reports/report.html --self-contained-html
 
 
@@ -74,7 +77,10 @@ jobs:
       - name: Install dependencies          
         run: pip install -r requirements.txt      #installing dependencies
       
-      - name: Run regression-tests                
+      - name: Run regression-tests
+        env:
+          REGISTERED_EMAIL: ${{ secrets.REGISTERED_EMAIL }}
+          REGISTERED_PASSWORD: ${{ secrets.REGISTERED_PASSWORD }}            
         run:  pytest tests/End-to-end/ -v --html=reports/report.html --self-contained-html    #Without "-m" to run all test for complete test report 
 
 
@@ -95,7 +101,7 @@ jobs:
         run:  npm install -g newman      #Install Newman
       
       - name: Run api-tests                
-        run:  newman run postman/demowebshop_collection.json -e postman/environment.json --reporters cli,html --reporter-html-export reports/api_report.html    #Without "-m" to run all test for complete test report 
+        run:  newman run postman/demowebshop_collection.json -e postman/environment.json --reporters cli,html --reporter-html-export reports/api_report.html
 
 
 
