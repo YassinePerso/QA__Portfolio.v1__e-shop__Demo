@@ -28,6 +28,7 @@ def driver(base_url):
         options.add_argument("--headless")  # To make it run in headless mode for CI environment
         options.add_argument("--no-sandbox")  # To bypass os security model
         options.add_argument("--disable-dev-shm-usage")  # To overcome limited resource problems in CI environments
+        options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
     driver = webdriver.Chrome(options=options)
     driver.get(base_url)
     yield driver
