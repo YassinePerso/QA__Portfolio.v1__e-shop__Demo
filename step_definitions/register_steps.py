@@ -72,8 +72,6 @@ def user_redirected_homepage(register_page):
     # Safer assertion even if the link changes than the entire url - checks if "registerresult" is present in the url
     assert "registerresult" in register_page.get_current_url()
     
-    
-
 
 
 
@@ -86,7 +84,6 @@ def user_enters_invalid_email_format(register_page):
 def user_should_see_error_message_invalid_mail(register_page):
     assert register_page.get_error_message()
 
-    
     
 
 
@@ -113,8 +110,6 @@ def result(register_page, result):
 
 
 
-
-
 # Steps of SCENARIO__04 -> Registration with existing e-mail
 @when("User enters existing e-mail")
 def user_enters_existing_email(register_page):
@@ -124,7 +119,6 @@ def user_enters_existing_email(register_page):
 @then("User should see an error message for existing e-mail")
 def user_should_see_error_message_existing_mail(register_page):
     assert register_page.get_error_message_already_registered_email()
-
 
 
 
