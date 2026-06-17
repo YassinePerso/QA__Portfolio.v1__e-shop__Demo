@@ -43,7 +43,7 @@ Feature: Registration
         And  User enters password of <length> characters
         And  User enters confirm password of <length> characters
         And  User clicks the register button
-        Then <result>
+        Then <result> of different length password
 
     Examples:
       | length | result                                        |
@@ -61,7 +61,7 @@ Feature: Registration
         And  User enters valid password
         And  User enters valid confirm password
         And  User clicks the register button
-        Then User should see an error message
+        Then User should see an error message for existing e-mail
 
     
     #TC_005
@@ -69,7 +69,7 @@ Feature: Registration
     Scenario: Failed registration with invalid credentials and verify if error message is displayed
         When User enters firstname
         And  User enters lastname
-        And  User enters invalid e-mail
+        And  User enters invalid e-mail format
         And  User enters invalid password
         And  User enters invalid confirm password
         And  User clicks the register button
