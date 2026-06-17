@@ -20,7 +20,7 @@ Feature: Account Login
     Scenario: Failed login with invalid e-mail
         When User enters invalid e-mail and valid password
         And User clicks the login button
-        Then User should see an error message
+        Then User should see an error message for invalid e-mail
 
   #TC_003
   @regression @login
