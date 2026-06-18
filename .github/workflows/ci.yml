@@ -1,4 +1,3 @@
-
 name: Demo Web Shop Automation Pipeline   #Name displayed on Github graphic interface
 
 
@@ -24,19 +23,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4    #Github action that clones the repo on virtual machine
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v5     #Github action that installs python
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.12'          #indicates version of python needed
+          python-version: '3.12'
       
-      - name: Install flake8          #We use flake8 as a linter
-        run: pip install flake8       #installing flake8
+      - name: Install flake8
+        run: pip install flake8
       
       - name: Run lint                
-        run: flake8 pages/ tests/ step_definitions/ conftest.py --max-line-length=200  #"--max-line-length=200" is used to indicate to flake8 that code lines over 200 characters must be signaled as errors
-
+        run: flake8 pages/ tests/ step_definitions/ conftest.py --max-line-length=200
 
 
   smoke-tests:   #For smoke tests
@@ -44,22 +42,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4    #Github action that clones the repo on virtual machine
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v5     #Github action that installs python
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.12.3'          #indicates version of python needed
+          python-version: '3.12.3'
       
       - name: Install dependencies          
-        run: pip install -r requirements.txt      #installing dependencies
+        run: pip install -r requirements.txt
       
       - name: Run smoke-tests
-        continue-on-error: true   #Added because DemoWebShop is blocking login tests cases due to IP problems 
+        continue-on-error: true   #Added because DemoWebShop is blocking login tests cases due to IP problems
         env:
           REGISTERED_EMAIL: ${{ secrets.REGISTERED_EMAIL }}
           REGISTERED_PASSWORD: ${{ secrets.REGISTERED_PASSWORD }}            
-        run:  pytest tests/End-to-end/ -v -m smoke --html=reports/smoke_report.html --self-contained-html
+        run: pytest tests/End-to-end/ -v -m smoke --html=reports/smoke_report.html --self-contained-html --alluredir=allure-results
 
       - name: Upload smoke test report
         uses: actions/upload-artifact@v4
@@ -67,6 +65,11 @@ jobs:
           name: smoke-test-report
           path: reports/smoke_report.html
 
+      - name: Upload smoke allure results
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-smoke
+          path: allure-results/
 
 
   regression-tests:   #For regression tests
@@ -74,28 +77,34 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4    #Github action that clones the repo on virtual machine
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v5     #Github action that installs python
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.12'          #indicates version of python needed
+          python-version: '3.12'
       
       - name: Install dependencies          
-        run: pip install -r requirements.txt      #installing dependencies
+        run: pip install -r requirements.txt
       
       - name: Run regression-tests
-        continue-on-error: true       #Added because DemoWebShop is blocking login tests cases due to IP problems 
+        continue-on-error: true   #Added because DemoWebShop is blocking login tests cases due to IP problems
         env:
           REGISTERED_EMAIL: ${{ secrets.REGISTERED_EMAIL }}
           REGISTERED_PASSWORD: ${{ secrets.REGISTERED_PASSWORD }}            
-        run:  pytest tests/End-to-end/ -v --html=reports/regression_report.html --self-contained-html    #Without "-m" to run all test for complete test report 
+        run: pytest tests/End-to-end/ -v --html=reports/regression_report.html --self-contained-html --alluredir=allure-results
 
       - name: Upload regression test report
         uses: actions/upload-artifact@v4
         with:
           name: regression-test-report
           path: reports/regression_report.html
+
+      - name: Upload regression allure results
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-regression
+          path: allure-results/
 
 
   bdd-tests:   #For BDD/Gherkin tests via pytest-bdd
@@ -114,11 +123,11 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run bdd-tests
-        continue-on-error: true   # Added because DemoWebShop is blocking login test cases due to IP problems
+        continue-on-error: true   #Added because DemoWebShop is blocking login test cases due to IP problems
         env:
           REGISTERED_EMAIL: ${{ secrets.REGISTERED_EMAIL }}
           REGISTERED_PASSWORD: ${{ secrets.REGISTERED_PASSWORD }}
-        run: pytest step_definitions/ -v --html=reports/bdd_report.html --self-contained-html
+        run: pytest step_definitions/ -v --html=reports/bdd_report.html --self-contained-html --alluredir=allure-results
 
       - name: Upload bdd test report
         uses: actions/upload-artifact@v4
@@ -126,6 +135,11 @@ jobs:
           name: bdd-test-report
           path: reports/bdd_report.html
 
+      - name: Upload bdd allure results
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-bdd
+          path: allure-results/
 
 
   api-tests:   #For API Postman tests
@@ -133,24 +147,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4    #Github action that clones the repo on virtual machine
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4    #Github action that installs Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '24'          #indicates version of node.js needed
+          node-version: '24'
       
       - name: Install Newman         
-        run:  npm install -g newman      #Install Newman
+        run: npm install -g newman
 
       - name: Install Newman HTML reporter
-        run: npm install -g newman-reporter-html    #Install newman-reporter-html to generate report in Virtual Machine
+        run: npm install -g newman-reporter-html
 
       - name: Create reports directory
         run: mkdir -p reports
       
       - name: Run api-tests                
-        run:  newman run postman/demowebshop_collection.json -e postman/environment.json --reporters cli,html --reporter-html-export reports/api_report.html
+        run: newman run postman/demowebshop_collection.json -e postman/environment.json --reporters cli,html --reporter-html-export reports/api_report.html
 
       - name: Upload api test report
         uses: actions/upload-artifact@v4
@@ -159,4 +173,43 @@ jobs:
           path: reports/api_report.html
 
 
+  allure-report:   #Allure report from all test jobs
+    needs: [regression-tests, bdd-tests, api-tests]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
+      - name: Download smoke allure results
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-results-smoke
+          path: allure-results/
+
+      - name: Download regression allure results
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-results-regression
+          path: allure-results/
+
+      - name: Download bdd allure results
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-results-bdd
+          path: allure-results/
+
+      - name: Install Allure CLI
+        run: |
+          wget -q https://github.com/allure-framework/allure2/releases/download/2.27.0/allure-2.27.0.tgz
+          tar -xzf allure-2.27.0.tgz
+          sudo mv allure-2.27.0 /opt/allure
+          sudo ln -s /opt/allure/bin/allure /usr/local/bin/allure
+
+      - name: Generate Allure report
+        run: allure generate allure-results --clean -o allure-report
+
+      - name: Upload Allure report
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report/
