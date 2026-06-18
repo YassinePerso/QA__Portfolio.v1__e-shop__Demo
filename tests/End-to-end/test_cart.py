@@ -18,8 +18,6 @@ def test_TC01_failed_add_outofstock_product_to_cart(driver, base_url):
     assert not product_page.is_added_to_cart_message_displayed()
 
 
-
-
 # TC_02 - Add available product to cart and verify if "added to cart" message is displayed
 @pytest.mark.smoke
 def test_TC02_add_available_product_to_cart(driver, base_url):
@@ -28,8 +26,6 @@ def test_TC02_add_available_product_to_cart(driver, base_url):
     product_page.navigate_to_product_page(base_url)
     product_page.add_product_to_cart(1)
     assert product_page.is_added_to_cart_message_displayed()  # Waiting for "Added to cart" message to appear
-
-
 
 
 # TC_03 - Add product to cart and verify it appears in the cart by navigating and checking in cart page
@@ -44,8 +40,6 @@ def test_TC03_add_product_verify_displayed_in_cart(driver, base_url):
     assert product_page.is_added_to_cart_message_displayed()  # Waiting for "Added to cart" message to appear
     cart_page.navigate_to_cart_page(base_url)  # Then navigates to cart page to verify if product is successfully added
     assert cart_page.is_product_in_cart(product_page.product_name_text)
-
-
 
 
 # TC_04 - Add second product and verify cart item count is updated
