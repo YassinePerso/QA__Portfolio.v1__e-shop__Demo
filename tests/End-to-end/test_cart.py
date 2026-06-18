@@ -9,13 +9,10 @@ from pages.cart_page import CartPage
 def test_TC01_failed_add_outofstock_product_to_cart(driver, base_url):
     # Instance of ProductPage class
     product_page = ProductPage(driver)
-
     # local variables for TC_01
     url_out_of_stock_product = "custom-t-shirt"
-
     # concatenation of base_url + name of the product in URL format
     product_page.driver.get(base_url + url_out_of_stock_product)
-
     # assertion "NOT" to return False - which is the expected value
     assert not product_page.is_element_visible(product_page.button_add_to_cart)
     assert not product_page.is_added_to_cart_message_displayed()
@@ -26,7 +23,6 @@ def test_TC01_failed_add_outofstock_product_to_cart(driver, base_url):
 def test_TC02_add_available_product_to_cart(driver, base_url):
 
     product_page = ProductPage(driver)
-
     product_page.navigate_to_product_page(base_url)
     product_page.add_product_to_cart(1)
     assert product_page.is_added_to_cart_message_displayed()  # Waiting for "Added to cart" message to appear
