@@ -35,7 +35,7 @@ jobs:
         run: pip install flake8       #installing flake8
       
       - name: Run lint                
-        run: flake8 pages/ tests/ conftest.py --max-line-length=200   #"--max-line-length=120" is used to indicate to flake8 that code lines over 200 characters must be signaled as errors
+        run: flake8 pages/ tests/ step_definitions/ conftest.py --max-line-length=200  #"--max-line-length=200" is used to indicate to flake8 that code lines over 200 characters must be signaled as errors
 
 
 
@@ -96,6 +96,35 @@ jobs:
         with:
           name: regression-test-report
           path: reports/regression_report.html
+
+
+  bdd-tests:   #For BDD/Gherkin tests via pytest-bdd
+    needs: smoke-tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run bdd-tests
+        continue-on-error: true   # Added because DemoWebShop is blocking login test cases due to IP problems
+        env:
+          REGISTERED_EMAIL: ${{ secrets.REGISTERED_EMAIL }}
+          REGISTERED_PASSWORD: ${{ secrets.REGISTERED_PASSWORD }}
+        run: pytest step_definitions/ -v --html=reports/bdd_report.html --self-contained-html
+
+      - name: Upload bdd test report
+        uses: actions/upload-artifact@v4
+        with:
+          name: bdd-test-report
+          path: reports/bdd_report.html
 
 
 
