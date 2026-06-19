@@ -2,9 +2,8 @@
 
 [![Demo Web Shop Automation Pipeline](https://github.com/YassinePerso/QA__Portfolio.v1__e-shop__Demo/actions/workflows/ci.yml/badge.svg)](https://github.com/YassinePerso/QA__Portfolio.v1__e-shop__Demo/actions/workflows/ci.yml)
 
-End-to-end QA automation portfolio built on [Demo Web Shop](https://demowebshop.tricentis.com/) — a public e-commerce demo site by Tricentis. Covers UI automation with Selenium, BDD testing with pytest-bdd/Gherkin, API testing with Postman/Newman, and a full CI/CD pipeline with GitHub Actions.
-
-Built as part of the ENI "Testeur Logiciel" certification (defense: September 2026).
+End-to-end QA automation portfolio built on [Demo Web Shop](https://demowebshop.tricentis.com/) — a public e-commerce demo site by Tricentis. 
+This Portfolio covers UI automation with Selenium, BDD testing with pytest-bdd/Gherkin, API testing with Postman/Newman, and a full CI/CD pipeline with GitHub Actions.
 
 ---
 
@@ -19,9 +18,10 @@ Built as part of the ENI "Testeur Logiciel" certification (defense: September 20
 | API Testing | Postman, Newman |
 | Reporting | pytest-html, Allure Report |
 | Data Generation | Faker |
-| Code Quality | flake8, autopep8 |
+| Lint | flake8, autopep8 |
 | CI/CD | GitHub Actions |
 | Environment | python-dotenv |
+| OS | Linux |
 
 ---
 
@@ -56,13 +56,13 @@ QA.Portfolio.v1/
 │   ├── register_steps.py
 │   └── search_steps.py
 ├── tests/
-│   └── End-to-end/                 # Classic Pytest test suites
+│   └── End-to-end/                 # Pytest test suites
 │       ├── test_cart.py
 │       ├── test_checkout.py
 │       ├── test_login.py
 │       ├── test_product_search.py
 │       └── test_register.py
-├── conftest.py                     # Shared pytest fixtures
+├── conftest.py                     # Pytest fixtures
 ├── pytest.ini                      # Pytest configuration
 └── requirements.txt                # Python dependencies
 ```
