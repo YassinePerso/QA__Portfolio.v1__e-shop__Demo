@@ -2,6 +2,12 @@
 
 ---
 
+> 🇫🇷 **Note (FR)** — Aucun bug fonctionnel n'a été détecté lors des sessions de tests exploratoires menées sur Demo Web Shop. Ce template est fourni à titre de référence et sera utilisé si des anomalies sont identifiées lors de futurs cycles de test.
+
+> 🇬🇧 **Note (EN)** — No functional bugs were identified during the exploratory testing sessions conducted on Demo Web Shop. This template is provided as a reference and will be used if any defects are found in future test cycles.
+
+---
+
 ## Bug Information
 
 | Field | Details |
