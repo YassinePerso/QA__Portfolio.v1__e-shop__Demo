@@ -1,7 +1,7 @@
-# Test Plan — Demo Web Shop
+# Test Plan --> Demo Web Shop
 
 ## 1. Objective & Scope
-<!-- Que teste-t-on ? Que ne teste-t-on PAS ? -->
+<!-- What do we test ? What do we no test ? -->
 -> IN SCOPE:
         → Registered customer authentication
         → New account creation
@@ -20,7 +20,7 @@
 
 
 ## 2. Application Under Test
-<!-- URL, type d'app, contexte -->
+<!-- URL, type of app, context -->
 → **Name:** Demo Web Shop
 → **URL:** https://demowebshop.tricentis.com/
 → **Type:** E-commerce website
@@ -29,16 +29,16 @@ simulating the purchase of electronic products. It is used strictly for testing 
 
 
 ## 3. Test Environment
-<!-- OS, navigateur, versions Python/Selenium/etc. -->
+<!-- OS, browser, versions Python/Selenium/etc. -->
 → OS: Linux/Ubuntu
-→ Navigateur: Google Chrome (version 148.0.7778.166)
+→ Browser: Google Chrome (version 148.0.7778.166)
 → Python (version: 3.12.3)
 → Selenium (version: 4.44.0)
 → Pytest (version: 9.0.3)
 
 
 ## 4. Test Types
-<!-- Liste les types de tests que tu vas exécuter -->
+<!-- List the types of tests you are going to execute -->
 → End-to-End tests
 → API tests
 → Smoke tests
@@ -49,7 +49,7 @@ simulating the purchase of electronic products. It is used strictly for testing 
 
 
 ## 5. Strategy & Approach
-<!-- Dans quel ordre ? Manuel d'abord ou auto ? Pourquoi ? -->
+<!-- In which order? manual testing first or automated testing first? Why? -->
 -> Manual testing limited to exploratory testing (to validate happy path) and test case design 
 -> All repetitive scenarios are automated with Selenium + Pytest
 -> Critical user journeys are covered with BDD/Gherkin
@@ -58,7 +58,7 @@ simulating the purchase of electronic products. It is used strictly for testing 
 
 
 ## 6. Entry & Exit Criteria
-<!-- Quand commence-t-on ? Quand s'arrête-t-on ? -->
+<!-- When do we start? When do we stop? -->
 -> ENTRY CRITERIA:
         - The test environment is fully configured and operational
         - User Stories, acceptance criteria and test cases are written and validated
@@ -75,7 +75,7 @@ simulating the purchase of electronic products. It is used strictly for testing 
 
 
 ## 7. Risks & Dependencies
-<!-- Qu'est-ce qui pourrait bloquer tes tests ? -->
+<!-- What could block your tests ? -->
 | Risk | Impact | Mitigation |
 |------|--------|------------|
 | Site unavailable | Tests cannot be executed, pipeline fails | Add a connectivity check before test execution, re-run manually if site is down |
