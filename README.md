@@ -2,8 +2,13 @@
 
 [![Demo Web Shop Automation Pipeline](https://github.com/YassinePerso/QA__Portfolio.v1__e-shop__Demo/actions/workflows/ci.yml/badge.svg)](https://github.com/YassinePerso/QA__Portfolio.v1__e-shop__Demo/actions/workflows/ci.yml)
 
-End-to-end QA automation portfolio built on [Demo Web Shop](https://demowebshop.tricentis.com/) — a public e-commerce demo site by Tricentis. 
-This Portfolio covers UI automation with Selenium, BDD testing with pytest-bdd/Gherkin, API testing with Postman/Newman, and a full CI/CD pipeline with GitHub Actions.
+🇬🇧 **EN**
+End-to-end QA automation portfolio built on [Demo Web Shop](https://demowebshop.tricentis.com/), a public e-commerce demo site by Tricentis, and [JSONPlaceholder](https://jsonplaceholder.typicode.com/), a public REST API for testing purposes.
+This portfolio covers UI automation with Selenium, BDD testing with pytest-bdd/Gherkin, API testing with Postman/Newman, and a full CI/CD pipeline with GitHub Actions.
+
+🇫🇷 **FR**
+Portfolio d'automatisation QA end-to-end construit sur [Demo Web Shop](https://demowebshop.tricentis.com/), un site e-commerce de démonstration public par Tricentis, et [JSONPlaceholder](https://jsonplaceholder.typicode.com/), une API REST publique destinée aux tests.
+Ce portfolio couvre l'automatisation UI avec Selenium, les tests BDD avec pytest-bdd/Gherkin, les tests API avec Postman/Newman, et un pipeline CI/CD complet avec GitHub Actions.
 
 ---
 
@@ -11,7 +16,7 @@ This Portfolio covers UI automation with Selenium, BDD testing with pytest-bdd/G
 
 | Category | Tools |
 |----------|-------|
-| Language | Python 3.12 |
+| Language | Python 3.12.3 |
 | UI Automation | Selenium 4, WebDriver Manager |
 | Test Framework | Pytest, pytest-bdd |
 | BDD | Gherkin (.feature files) |
@@ -73,7 +78,7 @@ QA.Portfolio.v1/
 
 ### Prerequisites
 
-- Python 3.12
+- Python 3.12.3
 - Google Chrome
 - Node.js 24 (for Newman)
 - Java (for Allure CLI)
@@ -104,8 +109,6 @@ Create a `.env` file at the root of the project:
 REGISTERED_EMAIL=your_email@example.com
 REGISTERED_PASSWORD=your_password
 ```
-
-> `data/users.csv` is intentionally excluded from the repository for security reasons.
 
 ---
 
@@ -160,9 +163,13 @@ The pipeline runs on every `push` and `pull_request` on `main` and `dev` branche
 
 ### Known CI limitation
 
-Login, checkout, and existing-email registration tests **pass 100% locally** but fail in CI due to Demo Web Shop blocking form submissions from cloud datacenter IPs (Azure). This is a known limitation of the target site, not the test framework. All other tests pass in CI without issue.
-
+🇬🇧 **EN**
+Login, checkout, and existing-email registration tests pass 100% locally but fail in CI due to Demo Web Shop blocking form submissions from cloud datacenter IPs (Azure). This is a known limitation of the target site, not the test framework. All other tests pass in CI without issue.
 This limitation is documented with `continue-on-error: true` on the affected jobs, allowing the pipeline to complete and generate reports regardless.
+
+🇫🇷 **FR**
+Les tests de connexion, de paiement et d'inscription avec un e-mail déjà existant passent à 100% en local mais échouent en CI car Demo Web Shop bloque les soumissions de formulaires provenant des IP de datacenters cloud (Azure). Il s'agit d'une limitation connue du site cible, et non du framework de test. Tous les autres tests passent en CI sans problème.
+Cette limitation est documentée avec `continue-on-error: true` sur les jobs concernés, ce qui permet au pipeline de se terminer et de générer les rapports malgré tout.
 
 ---
 
@@ -178,7 +185,7 @@ This limitation is documented with `continue-on-error: true` on the affected job
 
 ## Key QA Practices
 
-- **Page Object Model (POM)** with inheritance — zero `time.sleep()`, all waits via `WebDriverWait`
+- **Page Object Model (POM)** with inheritance --> all waits via `WebDriverWait` (no time.sleep() -> no flaky test)
 - **Data-driven testing** with Faker for dynamic test data generation
 - **BDD** with Gherkin Scenario Outline and Boundary Value Analysis (BVA)
 - **Headless mode** auto-detected via `CI` environment variable
@@ -186,30 +193,3 @@ This limitation is documented with `continue-on-error: true` on the affected job
 - **pytest.skip()** used for TC-05 checkout email verification (Gmail API integration deferred)
 - **Secrets management** via GitHub Secrets for CI credentials
 
----
-
-## Dependencies
-
-```
-pytest
-selenium
-pytest-bdd
-webdriver-manager
-pytest-html
-allure-pytest
-allure-python-commons
-requests
-faker
-python-dotenv
-autopep8
-flake8
-newman
-newman-reporter-html
-```
-
----
-
-## Author
-
-**Yassine** — ENI "Testeur Logiciel" student  
-[GitHub](https://github.com/YassinePerso)
