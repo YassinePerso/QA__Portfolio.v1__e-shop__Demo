@@ -1,4 +1,4 @@
-# QA Automation Portfolio -> Demo Web Shop && JSon Place Holder
+# QA Automation Portfolio #1
 
 [![Demo Web Shop Automation Pipeline](https://github.com/YassinePerso/QA__Portfolio.v1__e-shop__Demo/actions/workflows/ci.yml/badge.svg)](https://github.com/YassinePerso/QA__Portfolio.v1__e-shop__Demo/actions/workflows/ci.yml)
 
