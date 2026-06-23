@@ -164,11 +164,11 @@ The pipeline runs on every `push` and `pull_request` on `main` and `dev` branche
 ### Known CI limitation
 
 🇬🇧 **EN**
-Login, checkout, and existing-email registration tests pass 100% locally but fail in CI due to Demo Web Shop blocking form submissions from cloud datacenter IPs (Azure). This is a known limitation of the target site, not the test framework. All other tests pass in CI without issue.
+Login, checkout, and existing-email registration tests pass 100% locally but fail systematically in CI. After investigation, the most likely hypothesis is that Demo Web Shop blocks form submissions from GitHub Actions external IPs. This is a possible limitation of the target site, not the test framework. All other tests pass in CI without issue.
 This limitation is documented with `continue-on-error: true` on the affected jobs, allowing the pipeline to complete and generate reports regardless.
 
 🇫🇷 **FR**
-Les tests de connexion, de paiement et d'inscription avec un e-mail déjà existant passent à 100% en local mais échouent en CI car Demo Web Shop bloque les soumissions de formulaires provenant des IP de datacenters cloud (Azure). Il s'agit d'une limitation connue du site cible, et non du framework de test. Tous les autres tests passent en CI sans problème.
+Les tests de connexion, de paiement et d'inscription avec un e-mail déjà existant passent à 100% en local mais échouent systématiquement en CI. Après investigation, l'hypothèse la plus probable est que Demo Web Shop bloque les soumissions de formulaires provenant des IP externes de GitHub Actions. Il s'agit d'une limitation possible du site cible, et non du framework de test. Tous les autres tests passent en CI sans problème.
 Cette limitation est documentée avec `continue-on-error: true` sur les jobs concernés, ce qui permet au pipeline de se terminer et de générer les rapports malgré tout.
 
 ---
